@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopLite - Đăng Ký</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-warning d-flex align-items-center gap-2 fs-3" href="index.html">
+                <i class="bi bi-bag-heart-fill text-warning"></i>
+                <span class="text-white">Shop</span><span class="text-warning">Lite</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold d-flex align-items-center gap-1" href="index.html" title="Trang chủ">
+                            <i class="bi bi-house-door-fill fs-5"></i>
+                            <span class="d-lg-none">Trang chủ</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center me-3">
+                    <button class="nav-link text-white px-2 border-0 bg-transparent small fw-semibold" data-bs-toggle="modal" data-bs-target="#loginModal" id="nav-login-btn">Đăng nhập</button>
+                    <span class="text-secondary mx-2" id="nav-auth-divider">|</span>
+                    <a class="nav-link text-white px-2 active small fw-semibold" href="register.html" id="nav-register-btn">Đăng ký</a>
+                    
+                    <div class="dropdown d-none" id="nav-user-dropdown">
+                        <button class="btn btn-link text-white text-decoration-none dropdown-toggle d-flex align-items-center gap-2 p-0" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div id="nav-user-avatar" class="rounded-circle bg-warning text-dark fw-bold d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; font-size: 0.9rem;">
+                                U
+                            </div>
+                            <span id="nav-user-name" class="small">Tài khoản</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2" aria-labelledby="userMenu">
+                            <li><a class="dropdown-item small py-2" href="#"><i class="bi bi-person me-2"></i>Thông tin tài khoản</a></li>
+                            <li><a class="dropdown-item small py-2" href="#"><i class="bi bi-gear me-2"></i>Cài đặt</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><button class="dropdown-item small py-2 text-danger" id="nav-logout-btn"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</button></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="d-flex">
+                    <a href="cart.html" class="btn btn-warning position-relative d-flex align-items-center gap-2 fw-bold px-3 border-0 shadow-sm" style="background-color: #ffc107; color: #212529;">
+                        <i class="bi bi-cart3 fs-5"></i> 
+                        <span>Giỏ hàng</span>
+                        <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-2 border-dark" style="font-size: 0.75rem;">
+                            0
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title fw-bold" id="loginModalLabel"><i class="bi bi-shield-lock-fill me-2 text-warning"></i>Đăng Nhập</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div id="login-error-msg" class="alert alert-danger text-center small d-none" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill me-1"></i> Email hoặc mật khẩu không chính xác!
+                    </div>
+                    <form id="navbar-login-form">
+                        <div class="mb-3">
+                            <label for="modal-email" class="form-label small fw-bold">Địa chỉ Email</label>
+                            <input type="email" class="form-control" id="modal-email" placeholder="name@example.com" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="modal-password" class="form-label small fw-bold">Mật khẩu</label>
+                            <input type="password" class="form-control" id="modal-password" placeholder="Nhập mật khẩu" required>
+                        </div>
+                        <button type="submit" class="btn btn-warning w-100 fw-bold py-2 shadow-sm">Xác Nhận Đăng Nhập</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="container my-5 flex-grow-1 d-flex justify-content-center align-items-center">
+        <div class="card p-4 shadow-sm border" style="width: 100%; max-width: 550px;">
+            <h2 class="text-center mb-4 fw-bold text-dark">Đăng Ký Tài Khoản</h2>
+            
+            <div id="success-message" class="alert alert-success text-center d-none" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i> Đăng ký thành công!
+            </div>
+
+            <form id="register-form" novalidate>
+                <div class="mb-3">
+                    <label for="fullname" class="form-label fw-semibold">Họ và tên</label>
+                    <input type="text" class="form-control" id="fullname" placeholder="Nhập họ và tên của bạn">
+                    <div class="invalid-feedback" id="fullname-error">Vui lòng nhập họ tên hợp lệ.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label fw-semibold">Địa chỉ Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                    <div class="invalid-feedback" id="email-error">Địa chỉ email không đúng định dạng.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label fw-semibold">Mật khẩu</label>
+                    <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu (tối thiểu 6 ký tự)">
+                    <div class="invalid-feedback" id="password-error">Mật khẩu phải từ 6 ký tự trở lên.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label fw-semibold">Số điện thoại</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Nhập số điện thoại (10 chữ số)">
+                    <div class="invalid-feedback" id="phone-error">Số điện thoại không hợp lệ.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="city" class="form-label fw-semibold">Khu vực sinh sống</label>
+                    <select class="form-select" id="city">
+                        <option value="">-- Chọn thành phố --</option>
+                        <option value="hn">Hà Nội</option>
+                        <option value="dn">Đà Nẵng</option>
+                        <option value="hcm">TP. Hồ Chí Minh</option>
+                    </select>
+                    <div class="invalid-feedback" id="city-error">Vui lòng chọn khu vực của bạn.</div>
+                </div>
+
+                <div class="mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="terms">
+                        <label class="form-check-label small text-muted" for="terms">
+                            Tôi đồng ý với các điều khoản và điều kiện của ShopLite
+                        </label>
+                        <div class="invalid-feedback" id="terms-error">Bạn phải đồng ý với điều khoản để tiếp tục.</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-warning w-100 fw-bold py-2 shadow-sm">Đăng Ký Ngay</button>
+            </form>
+        </div>
+    </main>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
+        <div id="liveToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body fs-6">
+                    <i class="bi bi-check-circle-fill me-2"></i> Đăng ký tài khoản thành công!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-secondary text-center py-4 mt-auto border-top border-secondary">
+        <p class="mb-0 small text-white-50">&copy; 2026 ShopLite Mini E-Commerce. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/register.js"></script>
+</body>
+</html>
