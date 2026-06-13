@@ -8,23 +8,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 bg-light">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold text-warning" href="index.html">ShopLite</a>
+            <a class="navbar-brand fw-bold text-warning d-flex align-items-center gap-2 fs-3" href="index.html">
+                <i class="bi bi-bag-heart-fill text-warning animate-bounce"></i>
+                <span class="text-white">Shop</span><span class="text-warning">Lite</span>
+            </a>
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Trang chủ</a>
+                        <a class="nav-link active fw-semibold" href="index.html">Trang chủ</a>
                     </li>
                 </ul>
 
                 <div class="d-flex align-items-center me-3">
-                    <a class="nav-link text-white px-3" href="register.html" id="nav-register-btn">Đăng ký</a>
+                    <button class="nav-link text-white px-2 border-0 bg-transparent small fw-semibold" data-bs-toggle="modal" data-bs-target="#loginModal" id="nav-login-btn">Đăng nhập</button>
+                    <span class="text-secondary mx-2" id="nav-auth-divider">|</span>
+                    <a class="nav-link text-white px-2 small fw-semibold" href="register.html" id="nav-register-btn">Đăng ký</a>
                     
                     <div class="dropdown d-none" id="nav-user-dropdown">
                         <button class="btn btn-link text-white text-decoration-none dropdown-toggle d-flex align-items-center gap-2 p-0" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,38 +50,68 @@
                 </div>
                 
                 <div class="d-flex">
-                    <a href="cart.html" class="btn btn-outline-light position-relative">
-                        <i class="bi bi-cart3"></i> Giỏ hàng
-                        <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                    <a href="cart.html" class="btn btn-warning position-relative d-flex align-items-center gap-2 fw-bold px-3 border-0 shadow-sm" style="background-color: #ffc107; color: #212529;">
+                        <i class="bi bi-cart3 fs-5"></i> 
+                        <span>Giỏ hàng</span>
+                        <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-2 border-dark animate-pulse" style="font-size: 0.75rem;">
+                            0
+                        </span>
                     </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <header class="bg-light py-5 border-bottom mb-4">
-        <div class="container text-center py-4">
-            <h1 class="display-4 fw-bold text-dark">Welcome to ShopLite</h1>
-            <p class="lead text-muted">Your one-stop shop for all your shopping needs!</p>
-            <a href="#product-section" class="btn btn-warning btn-lg fw-bold px-4">Mua sắm ngay</a>
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title fw-bold" id="loginModalLabel"><i class="bi bi-shield-lock-fill me-2 text-warning"></i>Đăng Nhập</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div id="login-error-msg" class="alert alert-danger text-center small d-none" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill me-1"></i> Email hoặc mật khẩu không chính xác!
+                    </div>
+                    <form id="navbar-login-form">
+                        <div class="mb-3">
+                            <label for="modal-email" class="form-label small fw-bold">Địa chỉ Email</label>
+                            <input type="email" class="form-control" id="modal-email" placeholder="name@example.com" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="modal-password" class="form-label small fw-bold">Mật khẩu</label>
+                            <input type="password" class="form-control" id="modal-password" placeholder="Nhập mật khẩu" required>
+                        </div>
+                        <button type="submit" class="btn btn-warning w-100 fw-bold py-2 shadow-sm">Xác Nhận Đăng Nhập</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="bg-white py-5 border-bottom mb-4 text-dark position-relative overflow-hidden" style="background: linear-gradient(135deg, #fff 60%, #fff3cd 100%);">
+        <div class="container text-center py-4 position-relative z-1">
+            <h1 class="display-4 fw-bold text-dark mb-2">Welcome to <span class="text-warning">ShopLite</span></h1>
+            <p class="lead text-muted mb-4">Your one-stop shop for all your shopping needs!</p>
+            <a href="#product-section" class="btn btn-dark btn-lg fw-bold px-5 py-3 rounded-pill shadow">Mua sắm ngay <i class="bi bi-arrow-right ms-2"></i></a>
         </div>
     </header>
 
     <section class="container mb-4">
-        <div class="row g-3 bg-white p-3 rounded shadow-sm">
+        <div class="row g-3 bg-white p-3 rounded shadow-sm border">
             <div class="col-md-5">
                 <div class="input-group">
-                    <span class="input-group-text bg-transparent"><i class="bi bi-search"></i></span>
-                    <input type="text" id="search-input" class="form-control" placeholder="Tìm kiếm sản phẩm...">
+                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
+                    <input type="text" id="search-input" class="form-control border-start-0 bg-light" placeholder="Tìm kiếm sản phẩm...">
                 </div>
             </div>
             <div class="col-md-4">
-                <select id="category-select" class="form-select">
+                <select id="category-select" class="form-select bg-light">
                     <option value="">Tất cả danh mục</option>
-                    </select>
+                </select>
             </div>
             <div class="col-md-3">
-                <select id="sort-select" class="form-select">
+                <select id="sort-select" class="form-select bg-light">
                     <option value="">Sắp xếp mặc định</option>
                     <option value="price-asc">Giá: Thấp đến Cao</option>
                     <option value="price-desc">Giá: Cao đến Thấp</option>
@@ -84,16 +121,19 @@
     </section>
 
     <main class="container mb-5 flex-grow-1" id="product-section">
-        <h2 class="text-center mb-4 fw-bold">Sản phẩm nổi bật</h2>
+        <h2 class="text-center mb-4 fw-bold position-relative pb-2">
+            Sản phẩm nổi bật
+            <span class="position-absolute bottom-0 start-50 translate-middle-x bg-warning rounded" style="width: 60px; height: 4px;"></span>
+        </h2>
         
         <div id="loading-state" class="text-center py-5">
-            <div class="spinner-border text-warning" role="status">
+            <div class="spinner-border text-warning" role="status" style="width: 3rem; height: 3rem;">
                 <span class="visually-hidden">Đang tải...</span>
             </div>
-            <p class="mt-2 text-muted">Đang tải danh sách sản phẩm...</p>
+            <p class="mt-3 text-muted fw-semibold">Đang tải danh sách sản phẩm...</p>
         </div>
 
-        <div id="error-state" class="alert alert-danger text-center d-none" role="alert">
+        <div id="error-state" class="alert alert-danger text-center d-none shadow-sm" role="alert">
             <i class="bi bi-exclamation-triangle-fill fs-4 me-2"></i>
             Không thể tải dữ liệu sản phẩm. Vui lòng thử lại sau!
         </div>
@@ -102,8 +142,8 @@
             </div>
     </main>
 
-    <footer class="bg-dark text-white text-center py-3 mt-auto">
-        <p class="mb-0">&copy; 2026 ShopLite </p>
+    <footer class="bg-dark text-secondary text-center py-4 mt-auto border-top border-secondary">
+        <p class="mb-0 small text-white-50">&copy; 2026 ShopLite </p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
